@@ -28,3 +28,11 @@ class JWTAuthentication(BaseAuthentication):
             raise exceptions.AuthenticationFailed('Invalid token')
 
         return super().authenticate(request)
+
+#define a jwt decodor
+
+
+@staticmethod
+def jwt_decoder(token):
+    payload = jwt.decode(token, settings.SECRET_KEY)
+    return payload
